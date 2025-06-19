@@ -7,7 +7,7 @@ const defaultConfig = {
   enabled: false,
   autoRefillStamina: true,
   minimumStaminaWithoutRefill: 3,
-  autoCollectRewards: true,
+  autoCollectRewards: false,
   autoDayCare: true,
   currentLocale: document.documentElement.lang === 'pt' || 
     document.querySelector('html[lang="pt"]') || 
@@ -303,10 +303,8 @@ const toggleAutomation = () => {
   
   if (config.enabled) {
     startAutomation();
-    showNotification(t('statusEnabled'), 'success');
   } else {
     stopAutomation();
-    showNotification(t('statusDisabled'), 'info');
   }
   
   // Save the enabled state
@@ -373,8 +371,6 @@ const createConfigPanel = () => {
           } else {
             stopAutomation();
           }
-          
-          showNotification(t('settingsSaved'), 'success');
         }
       },
       {
